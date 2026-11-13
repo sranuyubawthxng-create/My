@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>กิจกรรมรับยศ</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+            font-family: 'Tahoma', sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            z-index: 10;
+        }
+        h1 {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        .button-group {
+            position: relative;
+            min-height: 100px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        button {
+            font-size: 1.2rem;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: bold;
+        }
+        #yesBtn {
+            background-color: #28a745;
+            color: white;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+        }
+        #yesBtn:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+        #noBtn {
+            background-color: #dc3545;
+            color: white;
+            position: absolute;
+        }
+        #imageDisplay {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+        }
+        #imageDisplay img {
+            max-width: 90vw;
+            max-height: 80vh;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="questionContainer">
+        <h1>มารับยศกันเถอะ!</h1>
+        <div class="button-group">
+            <button id="yesBtn" onclick="showImage()">รับยศ</button>
+            <button id="noBtn" onmouseover="moveButton()">ไม่รับยศ</button>
+        </div>
+    </div>
+
+    <div id="imageDisplay">
+        <img src="1000004499.gif" alt="ภาพแสดงผล">
+    </div>
+
+    <script>
+        function moveButton() {
+            const noBtn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 40) + 20;
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 40) + 20;
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        }
+
+        function showImage() {
+            document.getElementById('questionContainer').classList.add('hidden');
+            document.getElementById('imageDisplay').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
